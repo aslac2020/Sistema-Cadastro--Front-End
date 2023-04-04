@@ -1,0 +1,59 @@
+<div class="card" *ngIf="isExistsProducts == true; else modalError" >
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-2">Filtro:</div>
+      <div class="col-md-4">
+        <input type="text" [(ngModel)]="listFilter">
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table" *ngIf="products.length">
+        <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Código</th>
+          <th>Preço</th>
+          <th>Estoque</th>
+          <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of filteredProducts">
+          <td>
+            {{product.productName}}
+          </td>
+          <td>{{product.productCode | lowercase | convertToSpaces:'-'}}</td>
+          <td>{{product.price | currency: 'BRL' }}</td>
+          <td>10</td>
+          <td>
+            <button (click)="navigateDetail(product.id)"
+                    class="btn btn-primary">Visualizar
+            </button>
+            <button style="margin-left: 10px" (click)="navigateEdit(product.id)"
+                    class="btn btn-warning">Editar
+            </button>
+            <button style="margin-left: 10px" (click)="deleteProduct(product.id)"
+                    class="btn btn-danger">Deletar
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 10px; text-align: center">
+    <button style="width: 200px; height: 50px" (click)="navigateCreate()"
+            class="btn btn-primary">Cadastrar Produto
+    </button>
+</div>
+
+<ng-template #modalError >
+  <div class="container" style="margin-top: 10px; text-align: center">
+    <h1>Não existem produtos cadastrados :(</h1>
+  </div>
+</ng-template>

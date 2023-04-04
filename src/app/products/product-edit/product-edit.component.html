@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header">Editar Produto
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <form [formGroup]="FormEditProduct">
+        <div class="form-group">
+          <label >Nome do Produto</label>
+          <input type="text" class="form-control"  formControlName="productName" placeholder="Copo Descartavel">
+          <span class="text-danger" *ngIf="FormEditProduct.get('productName')?.errors?.['required'] && FormEditProduct.get('productName')?.touched" > Nome do Produto é obrigatório</span>
+        </div>
+        <div class="form-group">
+          <label>Codigo do Produto</label>
+          <input type="text" class="form-control" formControlName="productCode" placeholder="cp-0001" maxlength="7">
+          <span class="text-danger" *ngIf="FormEditProduct.get('productCode')?.errors?.['required'] && FormEditProduct.get('productCode')?.touched" > Código do Produto é obrigatório</span>
+        </div>
+        <div class="form-group">
+          <label>Descrição</label>
+          <textarea  class="form-control" formControlName="description" placeholder="O produto tal..."></textarea>
+          <span class="text-danger" *ngIf="FormEditProduct.get('description')?.errors?.['required'] && FormEditProduct.get('description')?.touched" > Descrição do Produto é obrigatório</span>
+        </div>
+        <div class="form-group">
+          <label>Preço</label>
+          <input type="text" class="form-control" formControlName="price" placeholder="R$12.50">
+          <span class="text-danger" *ngIf="FormEditProduct.get('price')?.errors?.['required'] && FormEditProduct.get('price')?.touched" > Preço do Produto é obrigatório</span>
+        </div>
+        <div class="container" style="margin-top: 10px; text-align: center">
+          <button [disabled]="FormEditProduct.invalid" (click)="updateProduct()" style="width: 200px" class="btn btn-primary">Atualizar</button>
+          <button (click)="onBack()" style="width: 200px; margin-left: 10px" class="btn btn-secondary">Voltar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

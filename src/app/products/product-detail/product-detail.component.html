@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-6 col-md-4">
+        <div class="row">
+          <span>Nome:</span>
+          <span>Código:</span>
+          <span>Descrição:</span>
+          <span>Preço:</span>
+          <span>Estoque:</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-4" >
+        <div class="row">
+          <span>{{productModel?.productName}}</span>
+          <span>{{productModel?.productCode}}</span>
+          <span>{{productModel?.description}}</span>
+          <span>{{productModel?.price | currency: 'BRL'}}</span>
+          <span>10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-outline-secondary"
+            style="width:80px"
+            (click)="onBack()"
+    >
+      <i class="fa fa-chevron-left"></i>Back
+    </button>
+  </div>
+</div>
